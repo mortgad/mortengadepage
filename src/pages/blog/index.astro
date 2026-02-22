@@ -1,0 +1,48 @@
+---
+import Base from "../../layouts/Base.astro";
+import "../../styles/global.css";
+
+const posts = [
+  {
+    title: "Why every data scientist should read Sartre",
+    date: "Coming soon",
+    description: "Existential dread meets gradient descent. A love story.",
+    slug: "#",
+  },
+  {
+    title: "Padel for people who can't padel good",
+    date: "Coming soon",
+    description: "Lessons learned from losing every single match with a smile.",
+    slug: "#",
+  },
+  {
+    title: "The case for short books",
+    date: "Coming soon",
+    description: "If it's over 200 pages, it better be really good.",
+    slug: "#",
+  },
+];
+---
+
+<Base title="Blog — Morten Gade" description="Thoughts on data, philosophy, and questionable hobbies.">
+  <section class="max-w-3xl mx-auto px-6 pt-24 pb-16">
+    <h1 class="text-3xl font-bold mb-2">Blog</h1>
+    <p class="text-text-muted mb-12">Thoughts on data, philosophy, and questionable hobbies.</p>
+
+    <div class="space-y-8">
+      {posts.map((post) => (
+        <article class="border border-border rounded-lg p-6 hover:border-accent/40 transition-colors">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-mono text-xs text-accent bg-accent/10 px-2.5 py-1 rounded-full">{post.date}</span>
+          </div>
+          <h2 class="text-lg font-semibold mb-2">{post.title}</h2>
+          <p class="text-text-muted text-sm">{post.description}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-16 text-center text-text-muted text-sm">
+      <p>More posts incoming. Probably. Eventually.</p>
+    </div>
+  </section>
+</Base>

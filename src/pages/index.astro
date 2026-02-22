@@ -1,17 +1,115 @@
 ---
+import Base from "../layouts/Base.astro";
+import "../styles/global.css";
 
+const jobs = [
+  { role: "Data Scientist", company: "Knowit Experience", location: "Aarhus" },
+  { role: "Student Worker", company: "Knowit Experience", location: "Aarhus" },
+  { role: "Student Worker", company: "Det Kgl. Bibliotek", location: "Licensing dept." },
+  { role: "Student Worker", company: "Jysk IT Network & Security", location: "" },
+  { role: "Intern", company: "Matchware Ltd.", location: "London" },
+];
+
+const education = [
+  { degree: "MSc Business Intelligence", school: "Aarhus University" },
+  { degree: "BSc Cognitive Science", school: "Aarhus University" },
+  { degree: "BSc Business Administration", school: "Aarhus University" },
+];
+
+const skills = ["Python", "SQL", "Google Cloud", "Microsoft Azure", "R"];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base title="Morten Gade">
+  <!-- Hero -->
+  <section class="max-w-3xl mx-auto px-6 pt-24 pb-16">
+    <p class="font-mono text-accent text-sm mb-4">Hi, my name is</p>
+    <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-4">
+      Morten Ravnsgård Gade
+    </h1>
+    <p class="text-xl text-text-muted max-w-xl mb-8">
+      Data scientist by day. Pop philosopher, padel enthusiast, and movie nerd by night.
+      <span class="block mt-2 text-base">Based in Aarhus, Denmark.</span>
+    </p>
+    <a
+      href="/#about"
+      class="inline-block font-mono text-sm border border-accent text-accent px-5 py-2.5 rounded hover:bg-accent/10 transition-colors"
+    >
+      Tell me more &darr;
+    </a>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="max-w-3xl mx-auto px-6 py-16">
+    <h2 class="font-mono text-accent text-sm mb-6">// about</h2>
+    <div class="space-y-4 text-text-muted leading-relaxed">
+      <p>
+        I'm a twenty-something data scientist living in Aarhus with my girlfriend Karoline.
+        I spend my days wrangling data and my evenings pretending I understand Camus.
+      </p>
+      <p>
+        When I'm not staring at a terminal, you'll find me on the padel court (losing gracefully),
+        going for a run, watching movies I'll rate on Letterboxd, or reading books &mdash; ideally short ones.
+        I also enjoy food, which is a fancy way of saying I like eating.
+      </p>
+      <p>
+        Shoutout to my mom Irene, the world's greatest, and my two awesome nieces Kaia and Asta
+        (and their equally awesome mom).
+      </p>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" class="max-w-3xl mx-auto px-6 py-16">
+    <h2 class="font-mono text-accent text-sm mb-6">// work</h2>
+    <div class="space-y-4">
+      {jobs.map((job) => (
+        <div class="flex items-baseline justify-between border-b border-border pb-4">
+          <div>
+            <p class="font-medium">{job.role}</p>
+            <p class="text-sm text-text-muted">{job.company}</p>
+          </div>
+          {job.location && <p class="text-sm text-text-muted shrink-0 ml-4">{job.location}</p>}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="max-w-3xl mx-auto px-6 py-16">
+    <h2 class="font-mono text-accent text-sm mb-6">// education</h2>
+    <div class="space-y-4">
+      {education.map((edu) => (
+        <div class="flex items-baseline justify-between border-b border-border pb-4">
+          <p class="font-medium">{edu.degree}</p>
+          <p class="text-sm text-text-muted shrink-0 ml-4">{edu.school}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="max-w-3xl mx-auto px-6 py-16">
+    <h2 class="font-mono text-accent text-sm mb-6">// skills</h2>
+    <div class="flex flex-wrap gap-3">
+      {skills.map((skill) => (
+        <span class="font-mono text-sm border border-border px-4 py-2 rounded-full text-text-muted hover:border-accent hover:text-accent transition-colors">
+          {skill}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="max-w-3xl mx-auto px-6 py-16">
+    <h2 class="font-mono text-accent text-sm mb-6">// contact</h2>
+    <p class="text-text-muted mb-6">
+      Want to chat about data, philosophy, or why your favourite movie is wrong? Drop me a line.
+    </p>
+    <a
+      href="mailto:mortengade7400@hotmail.com"
+      class="inline-block font-mono text-sm border border-accent text-accent px-5 py-2.5 rounded hover:bg-accent/10 transition-colors"
+    >
+      Say hello
+    </a>
+  </section>
+</Base>

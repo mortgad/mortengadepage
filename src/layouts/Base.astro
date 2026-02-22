@@ -1,0 +1,46 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Morten Gade", description = "Data scientist, pop philosopher, questionable padel player." } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <nav class="fixed top-0 w-full bg-bg/80 backdrop-blur-md border-b border-border z-50">
+      <div class="max-w-3xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="/" class="font-mono font-medium text-accent hover:text-accent-hover transition-colors">mg</a>
+        <div class="flex gap-6 text-sm text-text-muted">
+          <a href="/#about" class="hover:text-text transition-colors">about</a>
+          <a href="/#work" class="hover:text-text transition-colors">work</a>
+          <a href="/blog" class="hover:text-text transition-colors">blog</a>
+          <a href="/#contact" class="hover:text-text transition-colors">contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-1 pt-16">
+      <slot />
+    </main>
+
+    <footer class="border-t border-border">
+      <div class="max-w-3xl mx-auto px-6 py-8 text-center text-sm text-text-muted">
+        <p>&copy; {new Date().getFullYear()} Morten Ravnsgård Gade &middot; Built with questionable CSS skills</p>
+      </div>
+    </footer>
+  </body>
+</html>
